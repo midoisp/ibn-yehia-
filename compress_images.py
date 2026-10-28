@@ -1,10 +1,10 @@
 """يصغّر الصور ويضغطها بنفس أسمائها (علشان الصفحة تفتح أسرع).
-الاستخدام:  python compress_images.py  مسار_فولدر_الصور_الأصلية
-النتيجة تتحفظ في فولدر images_optimized (انسخها بعدين لفولدر images).
+الاستخدام:  python compress_images.py  [مسار_فولدر_الصور]
+النتيجة تتحفظ في فولدر images_optimized (انسخها بعدين مكان الأصلية).
 محتاج مكتبة Pillow:  pip install pillow"""
 import sys, pathlib
 from PIL import Image, ImageOps
-src = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else "../images")
+src = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else ".")
 out = pathlib.Path("images_optimized"); out.mkdir(exist_ok=True)
 for f in sorted(src.glob("*")):
     if f.suffix.lower() not in (".jpg", ".jpeg", ".png"): continue

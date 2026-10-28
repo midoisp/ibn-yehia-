@@ -13,7 +13,7 @@ const store = {
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } }
 };
 const money = n => `${n} ${C.currency}`;
-const src = f => /^(data:|https?:)/.test(f) ? f : 'images/' + f;
+const src = f => /^(data:|https?:)/.test(f) ? f : encodeURI(f);   // الصور بجانب index.html مباشرة
 const cleanItem = x => ({ id: x.id, name: x.name, cat: x.cat, section: x.section, price: x.price, badge: x.badge || '', desc: x.desc || '', img: x.img || '', hasBread: !!x.hasBread });
 const catOf = id => CATS.find(c => c.id === id);
 
